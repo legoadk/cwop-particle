@@ -1,4 +1,4 @@
-#include "cwop-particle.h"
+#include "cwop-particle/cwop-particle.h"
 #define CWOP_ID "FWxxxx"
 #define CWOP_LAT_DEG 00
 #define CWOP_LAT_MIN 00.00
