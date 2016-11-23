@@ -3,8 +3,8 @@
   License: CC-0 (Public Domain)
 */
 
-#ifndef CWOP_h
-#define CWOP_h
+#ifndef cwop_particle_h
+#define cwop_particle_h
 
 //#define PRINT_DEBUG_MESSAGES
 
@@ -345,4 +345,4 @@ class CWOPClass
 
 extern CWOPClass CWOP;
 
-#endif //CWOP_h
+#endif //cwop_particle_h

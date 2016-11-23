@@ -3,5 +3,5 @@
   License: CC-0 (Public Domain)
   */
 
-#include "cwop.h"
+#include "cwop-particle.h"
 CWOPClass CWOP;
