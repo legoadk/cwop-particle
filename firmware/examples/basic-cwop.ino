@@ -38,8 +38,8 @@ void loop()
       
       srand(Time.now());
 
-      // Set up the data packet with our gathered data (random numbers here, as an example)
-      // See cwop.h for more data types that can be provided!
+      /* Set up the data packet with our gathered data (random numbers here, as an example) */
+      /* See cwop.h for more data types that can be provided! */
       CWOP.setWindDegrees(randMToN(0.0, 360.0));
       CWOP.setWindMph(randMToN(0.0, 25.0));
       CWOP.setWindGustMph(randMToN(0.0, 50.0));
@@ -50,7 +50,12 @@ void loop()
       CWOP.setHumidityPct(randMToN(0.0, 100.0));
       CWOP.setPressureMb(randMToN(1000.0, 1030.0));
 
-      
-      CWOP.writePacket();
+      /* CWOP.createAPRS() creates an APRS packet using the last configured values and returns it as a string.
+       * For testing, we can simply Publish this so we can see what our app would send to CWOP. */
+      Particle.publish("app/debug", CWOP.createAPRS(), 60, PRIVATE);
+
+      /* This requires a valid CWOP ID; behaviour is undefined if an invalid one is provided. */
+      /* NOTE: it is not *necessary* (but is not explicitly harmful) to call CWOP.createAPRS() before calling CWOP.writePacket().
+      //CWOP.writePacket();
     }
 }
