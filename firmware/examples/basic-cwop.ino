@@ -7,6 +7,8 @@
 #define CWOP_LON_MIN 00.00
 #define CWOP_LON_HEMISPHERE 'W'
 
+CWOP_Particle CWOP = CWOP_Particle();
+
 TCPClient cwopclient;
 
 volatile bool cwopSend;
