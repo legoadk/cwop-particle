@@ -55,7 +55,7 @@ void loop()
       Particle.publish("app/debug", CWOP.createAPRS(), 60, PRIVATE);
 
       /* This requires a valid CWOP ID; behaviour is undefined if an invalid one is provided. */
-      /* NOTE: it is not *necessary* (but is not explicitly harmful) to call CWOP.createAPRS() before calling CWOP.writePacket().
+      /* NOTE: it is not *necessary* (but is not explicitly harmful) to call CWOP.createAPRS() before calling CWOP.writePacket(). */
       //CWOP.writePacket();
     }
 }
