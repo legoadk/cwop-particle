@@ -19,9 +19,6 @@ void CWOP_Particle::begin(Client &client, const char *regNumber)
 
 void CWOP_Particle::begin(Client &client)
 {
-#ifdef PRINT_DEBUG_MESSAGES
-  Serial.print("cwop::cwopBegin");
-#endif
   this->setClient(&client);
 }
 
@@ -74,9 +71,6 @@ bool CWOP_Particle::connect()
   connectSuccess = this->client->connect(CWOP_SERVER, CWOP_PORTNUMBER);
   if (!connectSuccess)
   {
-#ifdef PRINT_DEBUG_MESSAGES
-    Serial.print("Failed. Try default IP...");
-#endif
     connectSuccess = this->client->connect(CWOP_IPADDRESS, CWOP_PORTNUMBER);
   }
 
@@ -247,7 +241,9 @@ int CWOP_Particle::writePacket()
   if (this->client->available() > 0)
   {
     String connect_msg = this->client->readStringUntil('\r');
-    Particle.publish(PARTICLE_PUBLISH_TOPIC, connect_msg, PARTICLE_PUBLISH_TTL, PRIVATE);
+#ifdef PRINT_DEBUG_MESSAGES
+    Particle.publish(PARTICLE_PUBLISH_TOPIC, String("received message: " + connect_msg), PARTICLE_PUBLISH_TTL, PRIVATE);
+#endif
   }
 
   this->client->stop();
