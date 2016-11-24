@@ -1,6 +1,6 @@
 #CWOP-Particle: Citizen Weather Observer Program Reporting Library for Particle devices
 
-This library was created to facilitate in sending weather data in the correct APRS packet format to CWOP. 
+This library was created to facilitate sending weather data in the correct APRS packet format to CWOP. 
 
 This is meant to be a supplement to your own weather-gathering firware, and makes no attempt to actually gather any data - you must provide it!
 
