@@ -2,7 +2,7 @@
 
 This library was created to facilitate sending weather data in the correct APRS packet format to CWOP. 
 
-This is meant to be a supplement to your own weather-gathering firware, and makes no attempt to actually gather any data - you must provide it!
+This is meant to be a supplement to your own weather-gathering firmware, and makes no attempt to actually gather any data - you must provide it!
 
 Please note that in order to send data and have it be used by CWOP, you must register for an ID here: [CWOP Sign-Up][1]
 
