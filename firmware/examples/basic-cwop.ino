@@ -11,6 +11,8 @@ CWOP_Particle CWOP = CWOP_Particle();
 
 TCPClient cwopclient;
 
+#if PLATFORM_ID!=0 && PLATFORM_ID!=31
+// The Core is a special case and does not (by default) support Timers.
 volatile bool cwopSend;
 
 Timer tCWOPSend(1000 * 60 * 5, cbCWOPSend); // five minutes
@@ -18,13 +20,17 @@ Timer tCWOPSend(1000 * 60 * 5, cbCWOPSend); // five minutes
 void cbCWOPSend() {
   cwopSend = true;
 }
+#endif
+SerialLogHandler logHandler(LOG_LEVEL_TRACE);
 
 void setup()
 {
     CWOP.begin(cwopclient, CWOP_ID);
     CWOP.setLatitude(CWOP_LAT_DEG, CWOP_LAT_MIN, CWOP_LAT_HEMISPHERE);
     CWOP.setLongitude(CWOP_LON_DEG, CWOP_LON_MIN, CWOP_LON_HEMISPHERE);
+    #if PLATFORM_ID!=0 && PLATFORM_ID!=31
     tCWOPSend.start();
+    #endif
 }
 
 double randMToN(double M, double N)
@@ -34,10 +40,12 @@ double randMToN(double M, double N)
 
 void loop()
 {
+    #if PLATFORM_ID!=0 && PLATFORM_ID!=31
     if(cwopSend)
     {
       cwopSend = false;
       
+    #endif
       srand(Time.now());
 
       /* Set up the data packet with our gathered data (random numbers here, as an example) */
@@ -59,5 +67,11 @@ void loop()
       /* This requires a valid CWOP ID; behaviour is undefined if an invalid one is provided. */
       /* NOTE: it is not *necessary* (but is not explicitly harmful) to call CWOP.createAPRS() before calling CWOP.writePacket(). */
       //CWOP.writePacket();
+    #if PLATFORM_ID!=0 && PLATFORM_ID!=31
     }
+    #else
+    // The Core *does* support delay(), so that'll have to be good enough.
+    // CWOP.writePacket() introduces a delay of 500 while sending data, so we compensate for that here.
+    delay((1000 * 6 * 5) - 500);
+    #endif
 }
