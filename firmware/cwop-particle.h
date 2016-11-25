@@ -35,8 +35,10 @@
 #elif PLATFORM_ID == 10
 #define PARTICLE_ELECTRON
 #define PARTICLE_PHOTONELECTRON
+#elif PLATFORM_ID == 31
+#define PARTICLE_PI
 #else
-#error Only Particle/Spark Core/Photon/Electron/P1 are supported.
+#error Only Particle/Spark Core/Photon/Electron/P1 or Raspberry Pi are supported.
 #endif
 
 #ifdef PARTICLE_CORE
@@ -47,6 +49,8 @@
 #define CWOP_DEVICE "cwop-particle-electron"
 #elif defined(PARTICLE_P1)
 #define CWOP_DEVICE "cwop-particle-P1"
+#elif defined(PARTICLE_PI)
+#define CWOP_DEVICE "cwop-particle-Raspberry-Pi"
 #endif
 
 class CWOP_Particle
