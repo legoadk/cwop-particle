@@ -17,7 +17,7 @@
 #define CWOP_SERVER "cwop.aprs.net"
 #define CWOP_IPADDRESS IPAddress(63, 251, 153, 99)
 #define CWOP_PORTNUMBER 14580
-#define CWOP_VERSION "v0.0.9"
+#define CWOP_VERSION "v0.0.10"
 
 #define PARTICLE_PUBLISH_TTL 60 // Particle "time to live" for published messages
 #define PARTICLE_PUBLISH_TOPIC "cwop/debug"
