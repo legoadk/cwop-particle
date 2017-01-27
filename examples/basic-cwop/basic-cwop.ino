@@ -1,4 +1,4 @@
-#include "cwop-particle/cwop-particle.h"
+#include "cwop-particle.h"
 // This is your CWOP ID as provided to you when you registered.
 #define CWOP_ID "FWxxxx"
 
